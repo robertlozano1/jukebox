@@ -454,7 +454,7 @@ app.post("/playlists/:id/tracks", async (req, res) => {
  * 404 Handler - Catches all undefined routes
  * This should be the last middleware to catch any unmatched routes
  */
-app.use("*", (req, res) => {
+app.use((req, res, next) => {
   console.log(`❌ Route not found: ${req.method} ${req.originalUrl}`);
   sendError(res, 404, `Route ${req.method} ${req.originalUrl} not found`);
 });
